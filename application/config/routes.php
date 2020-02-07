@@ -49,6 +49,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+$route['default_controller']       = 'front';
+$route['404_override']             = '';
+$route['translate_uri_dashes']     = FALSE;
+
+// Auth User
+$route['login']                    = 'Admin/Auth/login';
+$route['logout']                   = 'Admin/Auth/logout';
+
+// Admin
+$route['admin']                    = 'Admin/Overview';
+
+$route['admin/portofolio']         = 'Admin/Portofolio';
+$route['admin/portofolio/(:num)']  = 'Admin/Portofolio';
+$route['admin/portofolio/add']     = 'Admin/Portofolio/add';
+$route['admin/portofolio/edit']    = 'Admin/Portofolio/edit';
+$route['admin/portofolio/delete']  = 'Admin/Portofolio/delete';
+
+$route['admin/client']             = 'Admin/Client';
+$route['admin/client/(:num)']      = 'Admin/Client'; // digunakan untuk pagination
+$route['admin/client/add']         = 'Admin/Client/add';
+$route['admin/client/edit']        = 'Admin/Client/edit';
+$route['admin/client/delete']      = 'Admin/Client/delete';
+
+$route['admin/testimoni']          = 'Admin/Testimoni';
+$route['admin/testimoni/(:num)']   = 'Admin/Testimoni';
+$route['admin/testimoni/add']      = 'Admin/Testimoni/add';
+$route['admin/testimoni/edit']     = 'Admin/Testimoni/edit';
+$route['admin/testimoni/delete']   = 'Admin/Testimoni/delete';
+
+$route['admin/article']            = 'Admin/Article';
+$route['admin/article/(:num)']     = 'Admin/Article';
+
+
+$route['admin/category']           = 'Admin/Category';
+$route['admin/category/(:num)']    = 'Admin/Category';
+$route['admin/category/add']       = 'Admin/Category/add';
+$route['admin/category/edit']      = 'Admin/Category/edit';
+$route['admin/category/delete']    = 'Admin/Category/delete';
