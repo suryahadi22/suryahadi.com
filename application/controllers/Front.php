@@ -7,6 +7,7 @@ class Front extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Curl_model', 'curl');
+        $this->load->model('Master_model', 'master');
     }
 
     public function index()
@@ -36,14 +37,32 @@ class Front extends CI_Controller {
         }
 
         $blog = $this->curl->get_artikel();
-        header('Content-Type: application/json');
-        echo json_encode($blog);
+
+        $sosial = '<a href="https://facebook.com/suryahadieh"><i class="fa fa-facebook" aria-hidden="true"></i>  </a>
+        <a href="https://twitter.com/suryahadi22"><i class="fa fa-twitter" aria-hidden="true"></i>  </a>
+        <a href="https://www.instagram.com/suryahadi22"><i class="fa fa-instagram" aria-hidden="true"></i>  </a>
+        <a href="https://linkedin.com/in/suryahadi-eko-hanggoro-215464147"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
+        <a href="https://github.com/suryahadi22"><i class="fa fa-github" aria-hidden="true"></i> </a>';
 
         $data['ucapan'] = $ucapan;
         $data['blog'] = $blog;
         $data['umur'] = $this->hitung_umur('1999-03-22');
+        $data['sosial'] = $sosial;
+        $data['portofolio'] = $this->master->get('portofolio')->result();
 
-        // $this->load->view('front/layout', $data);
+        $this->load->view('front/layout', $data);
+    }
+
+    public function portofolio_detail()
+    {
+        $id = $this->input->get('porto');
+        if (!$id) die('SELESAI');
+
+        $dbPorto = $this->master->get_where('portofolio', array('id_project' => $id))->row();
+        if (!$dbPorto) show_404();
+        $data['portofolio'] = $dbPorto;
+
+        $this->load->view('front/pop_portofolio/popup', $data);
     }
 
     private function hitung_umur($tanggal_lahir) {

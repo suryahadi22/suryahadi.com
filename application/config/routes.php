@@ -53,6 +53,9 @@ $route['default_controller']       = 'front';
 $route['404_override']             = '';
 $route['translate_uri_dashes']     = FALSE;
 
+// Front Page
+$route['portofolio']               = 'Front/portofolio_detail';
+
 // Auth User
 $route['login']                    = 'Admin/Auth/login';
 $route['logout']                   = 'Admin/Auth/logout';

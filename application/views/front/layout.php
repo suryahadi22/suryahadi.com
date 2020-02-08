@@ -48,10 +48,10 @@
                 <div class="responsive"><i data-icon="m" class="icon"></i></div>
                 <ul class="nav-menu">
                     <li><a href="#home" class="smoothScroll">Home</a></li>
-                    <li><a href="#about" class="smoothScroll">About</a></li>
+                    <li><a href="#about" class="smoothScroll">Tentang</a></li>
                     <li><a href="#portfolio" class="smoothScroll">Portfolio</a></li>
                     <li><a href="#blog" class="smoothScroll">Blog</a></li>
-                    <li><a href="#contact" class="smoothScroll">Contact</a></li>
+                    <li><a href="#contact" class="smoothScroll">Kontak</a></li>
                 </ul>
             </div>
         </div>
@@ -60,14 +60,9 @@
     <!--HOME-->
     <section class="home" id="home"> 
             <div class="home-content">
-                <h1>I'm <span class="element">Suryahadi</span></h1>
+                <h1>Saya <span class="element">Suryahadi</span></h1>
                 <div class="social">
-                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i>  </a>
-                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>  </a>
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i>  </a>
-                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>  </a>
-                    <a href="#"><i class="fa fa-behance" aria-hidden="true"></i>  </a>
-                    <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i>  </a>
+                    <?= $sosial; ?>
                 </div>
                 <a class="home-down bounce" href="#about"><i class="fa fa-angle-down"></i></a>
             </div>
@@ -129,44 +124,17 @@
         <div class="container">
             <div class="section-title">
                 <h2>PORTFOLIO</h2>
-                <div class="portfolio_filter">
-                    <ul>
-                        <li class="select-cat" data-filter="*">All</li>
-                        <li data-filter=".web-design">Web Design</li>
-                        <li data-filter=".aplication">Applications</li>
-                        <li data-filter=".development">Development</li>
-                    </ul>
-                </div>
             </div>
             <!--Portfolio Items-->  
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="isotope_items row">
-                        <!-- Item -->
-                        <a href="https://www.youtube.com/watch?v=M-M3rdL_WLQ" class="popup-youtube single_item link development col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <i class="fa fa-play" aria-hidden="true"></i>   
-                            <img src="<?= base_url(); ?>assets/images/work-1.jpg" alt=""> 
-                        </a>
-                        <!-- Item -->
-                        <a href="<?= base_url(); ?>assets/images/work-2.jpg" class="single_item link aplication col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.6s">
-                            <img src="<?= base_url(); ?>assets/images/work-2.jpg" alt=""> 
-                        </a>
-                        <!-- Item -->
-                        <a href="<?= base_url(); ?>assets/images/work-3.jpg" class="single_item link development col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.9s">
-                            <img src="<?= base_url(); ?>assets/images/work-3.jpg" alt=""> 
-                        </a>
-                        <!-- Item -->
-                        <a href="<?= base_url(); ?>assets/images/work-4.jpg" class="single_item link web-design col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="1.2s">
-                            <img src="<?= base_url(); ?>assets/images/work-4.jpg" alt=""> 
-                        </a>
-                        <!-- Item -->
-                        <a href="<?= base_url(); ?>assets/images/work-5.jpg" class="single_item link aplication col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="1.5s">
-                            <img src="<?= base_url(); ?>assets/images/work-5.jpg" alt=""> 
-                        </a>
-                        <!-- Item -->
-                        <a href="<?= base_url(); ?>assets/images/work-6.jpg" class="single_item link aplication col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="1.8s">
-                            <img src="<?= base_url(); ?>assets/images/work-6.jpg" alt=""> 
-                        </a>
+                        <?php foreach($portofolio as $porto): ?>
+                            <!-- Item -->
+                            <a href="<?= base_url('portofolio?porto='.$porto->id_project); ?>" class="single_item link aplication col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.6s">
+                                <img src="<?= base_url('data/portofolio_image/'.$porto->project_image); ?>" alt="">
+                            </a>
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 </div>
@@ -184,17 +152,18 @@
                 <!-- Blogs -->
                 <div class="row">
                     <?php foreach ($blog as $hahablog) : ?>
-                    <a href="<?= $hahablog['link']; ?>" class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-content wow fadeInUp" data-wow-delay="0.4s">
+                    <a href="<?= $hahablog['link']; ?>" class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-content wow fadeInUp link" data-wow-delay="0.4s">
                         <div class="blog-image">
-                            <img src="<?= base_url(); ?>assets/images/blog-1.png">
+                            <img src="<?= $hahablog['_embedded']['wp:featuredmedia'][0]['source_url']; ?>">
                         </div>
-                        <h1>By spite about do of do allow blush</h1>
-                        <p>Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat.  </p>
-                        <span class="blog-info">Larry Stark - 7 September 2016 </span>
+                        <h1><?= $hahablog['title']['rendered']; ?></h1>
+                        <div>
+                            <p><?= strip_tags($hahablog['excerpt']['rendered']); ?></p>
+                        </div>
                     </a>
                     <?php endforeach; ?>
                 </div>
-                <a href="blog-page.html" class="site-button"> READ MORE</a>
+                <a href="https://jurnalismuda.com/author/suryahadi" class="site-button link"> Baca yang lain</a>
             </div>
         </div>
     </section>
@@ -203,32 +172,28 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>GET IN TOUCH</h2>
-                <p>Out believe has request not how comfort evident. Up delight cousins we feeling <br/> minutes. Genius has looked end piqued spring. </p>
+                <h2>Hubungan Saya</h2>
+                <p>Jika anda memiliki pertanyaan atau jobs untuk saya, silahkan hubungi saya. Dengan senang hati saya akan membalas secepatnya</p>
             </div>
             <!-- Contact Info -->
             <div class="row">
                 <div class="col-md-offset-2 col-md-8 contact-information">
-                    <div class="col-md-4 col-sm-4 col-xs-12 contact-info wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="col-md-6 col-sm-6 col-xs-12 contact-info wow fadeInUp" data-wow-delay="0.4s">
                         <i class="fa fa-phone" aria-hidden="true"></i>
-                        <p>49 0216 514 25 25 <br/>0216 514 25 25</p>
+                        <p>+62 85 80 6602 320 </p>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 contact-info wow fadeInUp" data-wow-delay="0.6s">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <p>1444 S. Alameda Street Los Angeles, California 90021</p>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 contact-info wow fadeInUp" data-wow-delay="0.8s">
+                    <div class="col-md-6 col-sm-6 col-xs-12 contact-info wow fadeInUp" data-wow-delay="0.8s">
                         <i class="fa fa-envelope" aria-hidden="true"></i>
-                        <p>info@alberto.com <br/> contact@alberto.com</p>
+                        <p>halo@suryahadi.com <br/> suryahadieh@gmail.com</p>
                     </div>
                 </div> <!-- information end -->
                 <!--Contact Form-->
                 <div class="col-md-8 col-md-offset-2 wow fadeInUp" data-wow-delay="1s">
-                    <form class="col-md-12 contact-form" method="POST" action="mail.php">
+                    <form class="col-md-12 contact-form" method="POST" action="sendmail">
                         <div class="row">
                             <!--Name-->
                             <div class="col-md-6">
-                                <input id="con_name" name="con_name" class="form-inp requie" type="text" placeholder="Name">
+                                <input id="con_name" name="con_name" class="form-inp requie" type="text" placeholder="Nama">
                             </div>
                             <!--Email-->
                             <div class="col-md-6">
@@ -236,8 +201,8 @@
                             </div>
                             <div class="col-md-12">
                                 <!--Message-->
-                                <textarea name="con_message" id="con_message" class="requie" placeholder="Message" rows="8"></textarea>
-                                <input id="con_submit" class="site-button" type="submit" value="SEND A MESSAGE">
+                                <textarea name="con_message" id="con_message" class="requie" placeholder="Pesan" rows="8"></textarea>
+                                <input id="con_submit" class="site-button" type="submit" value="Jangan Ragu, tulis saja">
                             </div>
                         </div>
                     </form>
@@ -248,14 +213,9 @@
     <footer>
         <div class="container">
             <div class="social">
-                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i>  </a>
-                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>  </a>
-                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i>  </a>
-                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>  </a>
-                <a href="#"><i class="fa fa-behance" aria-hidden="true"></i>  </a>
-                <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i>  </a>
+                <?= $sosial; ?>
             </div>
-            <p>Copyright © <?= date('Y'); ?> Suryahadi, All rights Reserved.</p>
+            <p>Copyright © <?= date('Y'); ?> <a href="https://suryahadi.com">Suryahadi</a>, All rights Reserved. | Kode Sumber Website ini ada di <a href="https://github.com/suryahadi22/suryahadi.com">Github</a></p>
         </div>
     </footer>
     
