@@ -11,10 +11,6 @@
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css"/>
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/reset.css"/>
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css"/>
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/animate.css"/>
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/magnific-popup.css"/> 
     
 <!-- Google Web fonts -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
@@ -32,20 +28,20 @@
 </head>
 <body>
     
-<div class="container content">
+<div class="container">
         <div class="row">
             <div class="blog-single col-md-8 col-md-offset-2">
                 <div class="blog-image">
-                    <img src="<?= base_url('data/portofolio_image/'.$portofolio->project_image); ?>" alt="">
+                    <img src="<?= base_url('data/portofolio_image/'.$portofolio->project_image); ?>" alt="" style="max-height: 300px;">
                 </div>  
                 <h1><?= $portofolio->project_name; ?></h1>
                 <div class="blog-detail">
                     <?php if ($portofolio->project_compelete_date == null): ?>
                         <span>Proyek sedang dikerjakan</span><br>
                     <?php else: ?>
-                        Selesai <span>7 September 2016</span><br>
+                        Selesai <span><?= time_convert($portofolio->project_compelete_date); ?></span><br>
                     <?php endif; ?>
-                    Klien <span>Larry Stark</span>
+                    Klien <span><?= $portofolio->client_name; ?></span>
                 </div>
                 
                 <div class="blog-content">
@@ -55,14 +51,6 @@
         </div>
     </div>
     
-<!-- Javascripts -->
-<script src="<?= base_url(); ?>assets/js/jquery-2.1.4.min.js"></script><!-- jQuery library -->
-<script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script> 
-<script src="<?= base_url(); ?>assets/js/wow.min.js"></script>
-<script src="<?= base_url(); ?>assets/js/isotope.pkgd.min.js"></script>
-<script src="<?= base_url(); ?>assets/js/typed.js"></script>
-<script src="<?= base_url(); ?>assets/js/jquery.magnific-popup.min.js"></script>
-<script src="<?= base_url(); ?>assets/js/main.js"></script>
     
     
  

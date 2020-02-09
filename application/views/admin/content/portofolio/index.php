@@ -32,6 +32,7 @@
                                      <th>Klien Proyek</th>
                                      <th>Deskripsi Proyek</th>
                                      <th>Gambar Proyek</th>
+                                     <th>Selesai</th>
                                      <th style="width: 100px; text-align: center;">Aksi</th>
                                  </tr>
                              </thead>
@@ -50,13 +51,23 @@
                                         <td><?= $data->project_description; ?></td>
                                         <td><img src="<?= base_url('data/portofolio_image/'.$data->project_image); ?>" alt="<?= $data->project_name; ?>" class="image-resizer"></td>
                                         <td>
+                                            <?php
+                                                if ($data->project_compelete_date) {
+                                                    echo time_convert($data->project_compelete_date);
+                                                } else {
+                                                    echo 'Belum selesai';
+                                                }
+                                            ?>
+                                        </td>
+                                        <td>
                                             <a href="<?= base_url('admin/portofolio/edit?data-id='.urlencode($this->encryption->encrypt($data->id_project))); ?>" class="btn btn-sm btn-warning waves-effect" title="Edit"><i class="fa fa-edit"></i></a>
                                             <a href="#" class="btn btn-sm btn-danger waves-effect" title="Hapus" onclick="confirm_delete('<?= urlencode($this->encryption->encrypt($data->id_project)); ?>');"><i class="fa fa-trash"></i></a>
+                                        </td>
                                     </tr>
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <tr>
-                                        <td colspan="6">Tidak ada data tersedia</td>
+                                        <td colspan="7">Tidak ada data tersedia</td>
                                     </tr>
                                 <?php endif; ?>    
                              </tbody>

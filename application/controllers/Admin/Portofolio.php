@@ -86,11 +86,14 @@ class Portofolio extends MY_Controller {
             ");
 
             if ($this->form_validation->run() === true) {
+                $compelete_date = strtotime($this->input->post('compelete_date'));
+
                 $data = array (
                     'project_name' => $this->input->post('project_name'),
                     'project_client' => $this->input->post('project_client'),
                     'project_description' => $this->input->post('project_description'),
                     'project_image' => $portofolioImage,
+                    'project_compelete_date' => $compelete_date,
                     'created_at' => now()
                 );
 
@@ -155,7 +158,7 @@ class Portofolio extends MY_Controller {
                     $portofolioImage = $this->upload->file_name;
                 }
             } else { // Jika tidak ada foto
-                $portofolioImage = $portofolio->portofolio_image;
+                $portofolioImage = $portofolio->project_image;
             }
 
             $this->form_validation->set_rules('project_name', 'Nama Proyek', 'required');
@@ -173,11 +176,14 @@ class Portofolio extends MY_Controller {
             ");
 
             if ($this->form_validation->run() === true) {
+                $compelete_date = strtotime($this->input->post('compelete_date'));
+
                 $data = array (
                     'project_name' => $this->input->post('project_name'),
                     'project_client' => $this->input->post('project_client'),
                     'project_description' => $this->input->post('project_description'),
                     'project_image' => $portofolioImage,
+                    'project_compelete_date' => $compelete_date,
                     'updated_at' => now()
                 );
 

@@ -140,9 +140,7 @@ $('.responsive').on('click', function (e) {
     
     // MAGNIFIC POPUP FOR PORTFOLIO PAGE
     $('.link').magnificPopup({
-        type:'iframe',
-        gallery:{enabled:false},
-        zoom:{enabled: true, duration: 300}
+        type:'iframe'
     });
     
        // OWL CAROUSEL GENERAL JS

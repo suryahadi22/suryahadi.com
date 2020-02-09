@@ -25,6 +25,15 @@ class Master_model extends CI_Model {
         return $query;
     }
 
+    public function getJoinOneWhere($table, $table_join, $table_key, $table_join_key, $where)
+    {
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->join($table_join, $table_join.'.'.$table_join_key .'='. $table.'.'.$table_key);
+        $query = $this->db->where($where)->get();
+        return $query;
+    }
+
     public function get_where($table, $where)
     {
         $query = $this->db->where($where)->get($table);

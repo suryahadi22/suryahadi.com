@@ -44,6 +44,7 @@ class Front extends CI_Controller {
         <a href="https://linkedin.com/in/suryahadi-eko-hanggoro-215464147"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
         <a href="https://github.com/suryahadi22"><i class="fa fa-github" aria-hidden="true"></i> </a>';
 
+        
         $data['ucapan'] = $ucapan;
         $data['blog'] = $blog;
         $data['umur'] = $this->hitung_umur('1999-03-22');
@@ -58,7 +59,7 @@ class Front extends CI_Controller {
         $id = $this->input->get('porto');
         if (!$id) die('SELESAI');
 
-        $dbPorto = $this->master->get_where('portofolio', array('id_project' => $id))->row();
+        $dbPorto = $this->master->getJoinOneWhere('portofolio', 'client', 'project_client', 'id_client', array('id_project' => $id))->row();
         if (!$dbPorto) show_404();
         $data['portofolio'] = $dbPorto;
 

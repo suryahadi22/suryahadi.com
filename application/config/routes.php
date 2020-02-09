@@ -55,6 +55,7 @@ $route['translate_uri_dashes']     = FALSE;
 
 // Front Page
 $route['portofolio']               = 'Front/portofolio_detail';
+$route['send_email']               = 'Send/email_to_me';
 
 // Auth User
 $route['login']                    = 'Admin/Auth/login';

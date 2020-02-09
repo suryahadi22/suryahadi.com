@@ -46,6 +46,12 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label>Tanggal Selesai</label>
+                                <input type="text" name="compelete_date" class="form-control" value="<?= time_convert_dashboard($portofolio->project_compelete_date); ?>"
+                                    placeholder="Tanggal Selesai">
+                                <small>yyyy-mm-dd | kosong jika belum selesai</small>
+                            </div>
+                            <div class="form-group">
                                 <label>Deskripsi Proyek</label>
                                 <textarea class="textarea" class="form-control" name="project_description" placeholder="Tuliskan deskripsi proyek"
                                         style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?= $portofolio->project_description; ?></textarea>

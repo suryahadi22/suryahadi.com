@@ -189,7 +189,7 @@
                 </div> <!-- information end -->
                 <!--Contact Form-->
                 <div class="col-md-8 col-md-offset-2 wow fadeInUp" data-wow-delay="1s">
-                    <form class="col-md-12 contact-form" method="POST" action="sendmail">
+                    <form class="col-md-12 contact-form" method="POST" action="send_email">
                         <div class="row">
                             <!--Name-->
                             <div class="col-md-6">
