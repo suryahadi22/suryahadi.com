@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 28 Jan 2020 pada 16.54
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.3.13
+-- Generation Time: Feb 09, 2020 at 12:03 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `jangkrik_online_web`
+-- Database: `suryahadi-com`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -40,7 +40,7 @@ CREATE TABLE `category` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `client`
+-- Table structure for table `client`
 --
 
 CREATE TABLE `client` (
@@ -52,7 +52,7 @@ CREATE TABLE `client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `client`
+-- Dumping data for table `client`
 --
 
 INSERT INTO `client` (`id_client`, `client_name`, `client_image`, `created_at`, `updated_at`) VALUES
@@ -61,7 +61,7 @@ INSERT INTO `client` (`id_client`, `client_name`, `client_image`, `created_at`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `portofolio`
+-- Table structure for table `portofolio`
 --
 
 CREATE TABLE `portofolio` (
@@ -70,21 +70,22 @@ CREATE TABLE `portofolio` (
   `project_client` int(11) NOT NULL,
   `project_description` text DEFAULT NULL,
   `project_image` varchar(250) DEFAULT NULL,
+  `project_compelete_date` int(11) DEFAULT NULL,
   `created_at` int(15) NOT NULL,
   `updated_at` int(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `portofolio`
+-- Dumping data for table `portofolio`
 --
 
-INSERT INTO `portofolio` (`id_project`, `project_name`, `project_client`, `project_description`, `project_image`, `created_at`, `updated_at`) VALUES
-(4, 'Parjugeh.com', 17, '<p>Website <b>resmi </b><span style=\"font-family: Impact;\">﻿Parjugeh.com</span></p>', 'jangkrik_online-fileasset-_1804_13282228.png', 1580199757, 1580204907);
+INSERT INTO `portofolio` (`id_project`, `project_name`, `project_client`, `project_description`, `project_image`, `project_compelete_date`, `created_at`, `updated_at`) VALUES
+(6, 'Ahahaha', 17, '<p>jlkjlk    <br></p>', 'no_image.png', 0, 1581243435, 1581243558);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_user`
+-- Table structure for table `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -94,7 +95,7 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_user`
+-- Dumping data for table `tb_user`
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `password`) VALUES
@@ -103,7 +104,7 @@ INSERT INTO `tb_user` (`id`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `testimoni`
+-- Table structure for table `testimoni`
 --
 
 CREATE TABLE `testimoni` (
@@ -121,76 +122,76 @@ CREATE TABLE `testimoni` (
 --
 
 --
--- Indeks untuk tabel `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id_category`);
 
 --
--- Indeks untuk tabel `client`
+-- Indexes for table `client`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`id_client`);
 
 --
--- Indeks untuk tabel `portofolio`
+-- Indexes for table `portofolio`
 --
 ALTER TABLE `portofolio`
   ADD PRIMARY KEY (`id_project`),
   ADD KEY `tbl_cst_portofolio_client` (`project_client`);
 
 --
--- Indeks untuk tabel `tb_user`
+-- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `testimoni`
+-- Indexes for table `testimoni`
 --
 ALTER TABLE `testimoni`
   ADD PRIMARY KEY (`id_testimoni`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `client`
+-- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
   MODIFY `id_client` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `portofolio`
+-- AUTO_INCREMENT for table `portofolio`
 --
 ALTER TABLE `portofolio`
-  MODIFY `id_project` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_project` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_user`
+-- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `testimoni`
+-- AUTO_INCREMENT for table `testimoni`
 --
 ALTER TABLE `testimoni`
   MODIFY `id_testimoni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `portofolio`
+-- Constraints for table `portofolio`
 --
 ALTER TABLE `portofolio`
   ADD CONSTRAINT `tbl_cst_portofolio_client` FOREIGN KEY (`project_client`) REFERENCES `client` (`id_client`);

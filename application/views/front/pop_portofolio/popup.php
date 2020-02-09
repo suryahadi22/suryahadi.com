@@ -36,7 +36,7 @@
                 </div>  
                 <h1><?= $portofolio->project_name; ?></h1>
                 <div class="blog-detail">
-                    <?php if ($portofolio->project_compelete_date == null): ?>
+                    <?php if ($portofolio->project_compelete_date == null || $portofolio->project_compelete_date == '' || $portofolio->project_compelete_date == 0): ?>
                         <span>Proyek sedang dikerjakan</span><br>
                     <?php else: ?>
                         Selesai <span><?= time_convert($portofolio->project_compelete_date); ?></span><br>
