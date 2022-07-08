@@ -2,7 +2,7 @@ import React from "react";
 
 const heroContent = {
   heroImage: "img/hero/72153286_947389682263307_8541890331912699904_n.jpg",
-  heroImageMobile: "img/hero/72153286_947389682263307_8541890331912699904_n.jpg",
+  heroImageMobile: "img/hero/72153286_947389682263307_8541890331912699904_n_small.jpg",
   heroTitleName: "Suryahadi Eko Hanggoro",
   heroDesignation: "IT Developer",
   heroDescriptions: `A professional IT Developer, network infrastructure, software enginer, server setup and management.`,
